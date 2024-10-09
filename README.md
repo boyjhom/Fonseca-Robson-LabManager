@@ -17,7 +17,7 @@ No arquivo html, cria-se as seções da sua interface visual, bem como a parte m
 </body>
 </html>
 
-A seção head é onde são colocados os metadados, como estilo e links; Na seção body, é colocado o código referente a estrutura da página, como as "<div>", que são as unidades básicas de estrutura do html. Cada div, bem como outros elementos podem ter uma classe atribuída a eles (<div class="exemplo">). Para alterar estilos de uma div, programa-se no arquivo .css , exemplo:
+A seção head é onde são colocados os metadados, como estilo e links; Na seção body, é colocado o código referente a estrutura da página, como as "div", que são as unidades básicas de estrutura do html. Cada div, bem como outros elementos podem ter uma classe atribuída a eles (<div class="exemplo"). Para alterar estilos de uma div, programa-se no arquivo .css , exemplo:
 exemplo{
     background-color = green}
     
