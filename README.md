@@ -10,13 +10,13 @@ index.html: Este será o arquivo principal que contém o HTML.
 styles.css: Este será o arquivo onde você escreverá o CSS.
 
 No arquivo html, cria-se as seções da sua interface visual, bem como a parte mais estrutural. Exemplo:
-<html lang="pt">
+<!--<html lang="pt">
 <head> [...]
 </head>
 <body> [...]
 </body>
 </html>
-
+-->
 A seção head é onde são colocados os metadados, como estilo e links; Na seção body, é colocado o código referente a estrutura da página, como as "div", que são as unidades básicas de estrutura do html. Cada div, bem como outros elementos podem ter uma classe atribuída a eles (<div class="exemplo"). Para alterar estilos de uma div, programa-se no arquivo .css , exemplo:
 exemplo{
     background-color = green}
@@ -24,3 +24,9 @@ exemplo{
 Esse e outros atributos podem ser alterados no arquivo css, de maneira a editar o estilo da GUI.
 Além das divs, o html possuí diversos elementos estruturais a serem adicionados na GUI. Para ver a lista toda, consultar: https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 
+Os modelos para GUI seguem um layout simples e minimalista
+
+![Inicio]("esboco_GUI\Inico_GUI.png")
+![Estoque]("esboco_GUI\EstoqueGUI.png")
+![Equipe]("esboco_GUI\Equipe_GUI.png")
+![Meu Perfil]("esboco_GUI\Meu_perfil_GUI.png")
