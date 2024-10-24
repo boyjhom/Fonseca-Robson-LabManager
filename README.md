@@ -26,7 +26,7 @@ Além das divs, o html possuí diversos elementos estruturais a serem adicionado
 
 Os modelos para GUI seguem um layout simples e minimalista
 
-![Inicio]("esboco_GUI\Inico_GUI.png")
-![Estoque]("esboco_GUI\EstoqueGUI.png")
-![Equipe]("esboco_GUI\Equipe_GUI.png")
-![Meu Perfil]("esboco_GUI\Meu_perfil_GUI.png")
+![Inicio]("https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/Inico_GUI.png")
+![Estoque]("https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/EstoqueGUI.png")
+![Equipe]("https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/Equipe_GUI.png")
+![Meu Perfil]("https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/Meu_perfil_GUI.png")
