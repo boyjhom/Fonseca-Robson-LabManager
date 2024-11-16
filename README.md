@@ -30,3 +30,47 @@ Os modelos para GUI seguem um layout simples e minimalista
 ![Estoque](https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/EstoqueGUI.png)
 ![Equipe](https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/Equipe_GUI.png)
 ![Meu Perfil](https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/Meu_perfil_GUI.png)
+
+
+### **Funcionalidades**
+- **Gerenciamento de Estoque**:
+  - Registro de itens com detalhes como nome, quantidade, descrição e código.
+  - Atualização de quantidades no estoque diretamente pela interface do sistema.
+  - Lista predefinida de itens típicos de um laboratório de robótica, como:
+    - Parafusos
+    - Chave inglesa
+    - Sensores de proximidade
+    - Motores de passo
+    - Microcontroladores
+    - Fonte de alimentação
+    - Cabos de conexão
+    - Solda em fio
+    - Multímetros
+    - Chave Philips
+- **Administração de Equipe**:
+  - Cadastro de membros da equipe com informações como nome, cargo e e-mail.
+  - Exibição dos membros em uma interface bem estruturada.
+- **Perfil do Usuário**:
+  - Página personalizada que exibe as informações do usuário logado.
+- **Sistema de Login e Cadastro**:
+  - Usuários podem se registrar e acessar o sistema utilizando suas credenciais.
+- **Interface Gráfica Intuitiva**:
+  - Navegação por abas para acessar as páginas de "Armazenamento", "Equipe" e "Meu Perfil".
+  - Design minimalista e responsivo.
+
+---
+
+## **Estrutura do Projeto**
+
+### **1. Diretórios**
+O projeto está organizado em três principais pastas:
+- **`templates/`**: Contém os arquivos HTML que definem as páginas do sistema (ex.: `index.html`, `estoque.html`, `equipe.html`, etc.).
+- **`static/`**: Contém os recursos estáticos do projeto:
+  - **Imagens**: Localizadas em `static/assets/` (ex.: logos, ícones, imagens de exemplo).
+  - **CSS**: Arquivos de estilo em `static/css/` (ex.: `style.css`).
+- **`app.py`**: Arquivo principal do servidor Flask que gerencia as rotas e as lógicas de backend.
+
+### **2. Configuração**
+Antes de rodar o projeto, é necessário instalar as dependências. Utilize:
+```bash
+pip install flask

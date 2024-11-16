@@ -10,22 +10,25 @@
     <header>
         <div class="center">
             <div class="logo">
-                <img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" width="100" height="100">
+                <img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" alt="Logo" width="100" height="100">
             </div>
             <div class="menu">
                 <a href="{{ url_for('estoque') }}">Armazenamento</a>
                 <a href="{{ url_for('equipe') }}">Equipe</a>
-                <a href="{{ url_for('meu_perfil', username=usuario.username) }}">Meu Perfil</a>
+                <a href="{{ url_for('meu_perfil') }}">Meu Perfil</a>
             </div>
             <div class="user">
-                <img src="{{ url_for('static', filename='assets/user_model1.jpg') }}">
+                <img src="{{ url_for('static', filename='assets/user_model1.jpg') }}" alt="Usuário">
             </div>
+            <button onclick="window.location.href='{{ url_for('logout') }}'" class="botao-sair">Sair</button>
         </div>
         <div class="barra"></div>
     </header>
-
     <main>
-        <h2>Bem-vindo, {{ usuario.nome }}!</h2>
+        <!-- Mantida apenas uma mensagem de boas-vindas -->
+        <div class="content">
+            <h1>Bem-vindo, {{ usuario.nome }}!</h1>
+        </div>
         
         <!-- Barra de busca -->
         <div class="search-container">

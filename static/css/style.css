@@ -322,7 +322,9 @@ body {
     display: flex;
     gap: 20px;
 }
-
+.user {
+    margin-right: 20px;  /* Ajuste a distância do avatar */
+}
 .barra {
     width: 100%;
     height: 5px;
@@ -393,7 +395,36 @@ th {
     cursor: pointer;
     font-size: 1em;
 }
+button {
+    padding: 5px 10px;
+    background-color: #224269;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 .botao-estoque:hover {
+    background-color: #1a3553;
+}
+input[type="number"] {
+    width: 60px;
+    margin-right: 10px;
+    padding: 5px;
+}
+html, body {
+    height: auto; /* Permite altura dinâmica */
+    overflow-y: auto; /* Ativa a rolagem vertical */
+}
+.botao-sair {
+    padding: 5px 15px;
+    background-color: #224269;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto; /* Garante que o botão vá para a extrema direita */
+}
+.botao-sair:hover {
     background-color: #1a3553;
 }

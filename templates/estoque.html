@@ -24,14 +24,27 @@
             <table>
                 <tr>
                     <th>Nome</th>
-                    <th>Quantidade</th>
-                    <th>Código</th>
+                    <th>Quantidade Total</th>
+                    <th>Disponível</th>
+                    <th>Ações</th>
                 </tr>
                 {% for item in itens %}
                 <tr>
                     <td>{{ item.nome }}</td>
                     <td>{{ item.quantidade }}</td>
-                    <td>{{ item.codigo }}</td>
+                    <td>{{ item.disponivel }}</td>
+                    <td>
+                        <form action="{{ url_for('retirar') }}" method="POST" style="display: inline;">
+                            <input type="hidden" name="nome" value="{{ item.nome }}">
+                            <input type="number" name="quantidade" min="1" max="{{ item.disponivel }}" required>
+                            <button type="submit">Retirar</button>
+                        </form>
+                        <form action="{{ url_for('devolver') }}" method="POST" style="display: inline;">
+                            <input type="hidden" name="nome" value="{{ item.nome }}">
+                            <input type="number" name="quantidade" min="1" max="{{ item.quantidade - item.disponivel }}" required>
+                            <button type="submit">Devolver</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
@@ -49,5 +62,11 @@
             </form>
         </div>
     </div>
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('gerar_relatorio') }}" target="_blank">
+            <button class="botao-estoque">Gerar Relatório de Cautela</button>
+        </a>
+    </div>
+    
 </body>
 </html>

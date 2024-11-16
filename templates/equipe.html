@@ -8,35 +8,49 @@
 <body>
     <header>
         <div class="center">
-            <div class="logo"><img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" width="100" height="100"></div>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" alt="Logo" width="100" height="100">
+            </div>
             <div class="menu">
                 <a href="{{ url_for('index', username=usuario_logado.username) }}">Armazenamento</a>
                 <a href="{{ url_for('equipe') }}">Equipe</a>
                 <a href="{{ url_for('meu_perfil') }}">Meu Perfil</a>
             </div>
-            <div class="user"><img src="{{ url_for('static', filename='assets/user_model1.jpg') }}"></div>
+            <div class="user">
+                <img src="{{ url_for('static', filename='assets/user_model1.jpg') }}" alt="Usuário">
+            </div>
         </div>
         <div class="barra"></div>
     </header>
 
     <div class="equipe-container">
         <table>
-            <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Cargo</th>
-            </tr>
-            {% for usuario in usuarios %}
-            <tr>
-                <td>{{ usuario.nome }}</td>
-                <td>{{ usuario.email }}</td>
-                <td>{{ usuario.cargo }}</td>
-            </tr>
-            {% endfor %}
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Cargo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.cargo }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
+
         <div class="info-box">
             <div class="foto">FOTO</div>
-            <div class="dados">DADOS</div>
+            <div class="dados">
+                <p>Usuário Logado:</p>
+                <p><strong>{{ usuario_logado.nome }}</strong></p>
+                <p>Email: {{ usuario_logado.email }}</p>
+                <p>Cargo: {{ usuario_logado.cargo }}</p>
+            </div>
         </div>
     </div>
 </body>
