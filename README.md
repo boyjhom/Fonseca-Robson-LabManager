@@ -70,31 +70,24 @@ O projeto está organizado em três principais pastas:
   - **CSS**: Arquivos de estilo em `static/css/` (ex.: `style.css`).
 - **`app.py`**: Arquivo principal do servidor Flask que gerencia as rotas e as lógicas de backend.
 
-### **2. Configuração**
-Antes de rodar o projeto, é necessário instalar as dependências. Utilize:
-```bash
-pip install flask
-## Alterações Recentes no Projeto
 
-O projeto **Lab Manager** passou por diversas melhorias e acréscimos de funcionalidades. Abaixo estão detalhadas as mudanças realizadas:
-
-### 1. Implementação do Botão "Sair"
+### 2. Implementação do Botão "Sair"
 - Foi adicionado um botão "Sair" na interface, localizado ao lado direito do menu de navegação.
 - O botão permite que o usuário encerre a sessão com facilidade, redirecionando-o para a página de login.
 
-### 2. Ajustes na Página Inicial
+### 3. Ajustes na Página Inicial
 - Correção da duplicação da mensagem "Bem-vindo, [nome do usuário]".
 - Layout reformulado para melhorar a experiência do usuário:
   - O botão "Sair" foi reposicionado ao lado do menu, sem interferir no logo ou avatar.
   - Melhor alinhamento dos elementos da página.
 
-### 3. Sistema de Cautelas
+### 4. Sistema de Cautelas
 - Implementação da funcionalidade de retirada e devolução de itens no estoque:
   - **Retirada:** Permite que os usuários registrem materiais retirados, com ajuste automático das quantidades disponíveis no estoque.
   - **Devolução:** Permite devolver itens ao estoque, com atualização das quantidades.
 - As operações de retirada e devolução são registradas, vinculando o nome do usuário à transação.
 
-### 4. Geração de Relatórios em PDF
+### 5. Geração de Relatórios em PDF
 - Foi implementada a funcionalidade de geração de relatórios de cautelas em formato PDF.
 - Detalhes do relatório incluem:
   - Nome do usuário.
@@ -109,7 +102,7 @@ O projeto **Lab Manager** passou por diversas melhorias e acréscimos de funcion
   pip install reportlab
   ```
 
-### 5. Melhorias Gerais no Código
+### 6. Melhorias Gerais no Código
 - Reestruturação do arquivo `app.py` para garantir maior clareza e organização.
 - Correção de bugs relacionados à passagem de parâmetros nas rotas.
 - Ajustes no CSS para melhorar o layout e a responsividade da interface.
@@ -129,4 +122,5 @@ Caso não tenha o arquivo `requirements.txt`, as bibliotecas principais são:
 Instale-as diretamente com:
 ```bash
 pip install flask reportlab
+
 
