@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Estoque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="center">
+            <div class="logo"><img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" width="100" height="100"></div>
+            <div class="menu">
+                <a href="{{ url_for('index') }}">Armazenamento</a>
+                <a href="{{ url_for('equipe') }}">Equipe</a>
+                <a href="{{ url_for('meu_perfil', username=usuario.username) }}">Meu Perfil</a>
+            </div>
+            <div class="user"><img src="{{ url_for('static', filename='assets/user_model1.jpg') }}"></div>
+        </div>
+        <div class="barra"></div>
+    </header>
+
+    <div class="estoque-container">
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Quantidade</th>
+                    <th>Código</th>
+                </tr>
+                {% for item in itens %}
+                <tr>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.quantidade }}</td>
+                    <td>{{ item.codigo }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="info-box">
+            <div class="foto"><img src="{{ url_for('static', filename='assets/parafuso.png') }}" alt="Imagem do item"></div>
+            <form action="{{ url_for('atualizar_estoque') }}" method="POST">
+                <select name="nome">
+                    {% for item in itens %}
+                        <option value="{{ item.nome }}">{{ item.nome }}</option>
+                    {% endfor %}
+                </select>
+                <input type="number" name="quantidade" placeholder="Nova Quantidade">
+                <button type="submit">Atualizar Estoque</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

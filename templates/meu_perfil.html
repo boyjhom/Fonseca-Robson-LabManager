@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="center">
+            <div class="logo"><img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" width="100" height="100"></div>
+            <div class="menu">
+                <a href="{{ url_for('index') }}">Armazenamento</a>
+                <a href="{{ url_for('equipe') }}">Equipe</a>
+                <a href="{{ url_for('meu_perfil', username=usuario.username) }}">Meu Perfil</a>
+            </div>
+            <div class="user"><img src="{{ url_for('static', filename='assets/user_model1.jpg') }}"></div>
+        </div>
+        <div class="barra"></div>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-image">
+            <img src="{{ url_for('static', filename='assets/user_model1.jpg') }}" alt="Foto do Perfil">
+        </div>
+        <div class="profile-info">
+            <p><strong>Nome:</strong> {{ usuario.nome }}</p>
+            <p><strong>Função:</strong> {{ usuario.cargo }}</p>
+            <p><strong>Email:</strong> {{ usuario.email }}</p>
+        </div>
+    </div>
+</body>
+</html>

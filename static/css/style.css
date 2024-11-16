@@ -1,0 +1,399 @@
+/* Reset geral de padding e margin */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Configuração do corpo */
+html, body {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    height: 100vh;
+}
+
+/* Centralização e alinhamento do cabeçalho */
+.center {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+    width: 200px;
+    height: auto;
+    padding-top: 0;
+    padding-left: 10px;
+}
+
+/* Header */
+header {
+    padding: 20px 0;
+    padding-top: 10px;
+}
+
+/* Menu de navegação */
+.menu {
+    padding-top: 40px;
+    display: flex;
+    gap: 20px;
+    width: auto;
+    flex-wrap: wrap;
+    padding-left: 50%;
+}
+
+.menu a {
+    color: #224269;
+    text-decoration: none;
+    margin-left: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Barra abaixo do cabeçalho */
+.barra {
+    width: 100%;
+    height: 5px;
+    background-color: #224269;
+    margin-top: 10px;
+    position: absolute;
+    top: 110px;
+    left: 0;
+    z-index: 100;
+}
+
+/* Estilos para o ícone do usuário */
+.user {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 50px;
+    margin-top: 15px;
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+}
+
+.user img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+    left: 10%;
+}
+
+/* Contêiner de busca */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-box input {
+    width: 400px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #224269;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.search-box button {
+    padding: 10px 20px;
+    background-color: #224269;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.search-box button:hover {
+    background-color: #1a3553;
+}
+
+/* Estilos para a tela de login */
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 150px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    color: #224269;
+}
+
+/* Estilos dos formulários */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-family: Arial, sans-serif;
+    color: #224269;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #224269;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1a3553;
+}
+
+/* Estilos da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #224269;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #224269;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+/* Estilos da página "Meu Perfil" */
+.profile-container {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.profile-image {
+    flex: 1;
+    text-align: center;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile-info {
+    flex: 2;
+    padding-left: 20px;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.profile-info p {
+    margin: 10px 0;
+}
+
+/* Contêiner de cadastro centralizado */
+.cadastro-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Estilos específicos para a página de "Equipe" */
+.equipe-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo da tabela de equipe */
+.equipe-container table {
+    width: 60%;
+    border-collapse: collapse;
+}
+
+.equipe-container th, .equipe-container td {
+    padding: 10px;
+    border: 1px solid #224269;
+    text-align: center;
+}
+
+/* Info-box para exibir detalhes */
+.info-box {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #224269;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.foto {
+    width: 100%;
+    height: 150px;
+    background-color: #224269;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.dados {
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    color: #224269;
+    font-weight: bold;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+}
+
+.center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.barra {
+    width: 100%;
+    height: 5px;
+    background-color: #224269;
+    margin-top: 10px;
+}
+
+.estoque-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.table-container {
+    width: 60%;
+    background-color: #f0f4ff;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #224269;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #224269;
+}
+
+th {
+    background-color: #224269;
+    color: white;
+}
+
+.info-box {
+    width: 25%;
+    text-align: center;
+    background-color: #f0f4ff;
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid #224269;
+}
+
+.foto {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto img {
+    width: 80%;
+    height: auto;
+}
+
+.botao-estoque {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #224269;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.botao-estoque:hover {
+    background-color: #1a3553;
+}
