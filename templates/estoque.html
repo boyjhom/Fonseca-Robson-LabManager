@@ -8,14 +8,17 @@
 <body>
     <header>
         <div class="center">
+            <a href="{{url_for('index')}}">
             <div class="logo"><img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" width="100" height="100"></div>
+            </a>
             <div class="menu">
-                <a href="{{ url_for('index') }}">Armazenamento</a>
+                <a href="{{ url_for('estoque') }}">Armazenamento</a>
                 <a href="{{ url_for('equipe') }}">Equipe</a>
                 <a href="{{ url_for('meu_perfil', username=usuario.username) }}">Meu Perfil</a>
+                <a href="{{ url_for('logout') }}">Sair</a>
+                <div class="user"><img src="{{ url_for('static', filename='assets/user_model1.jpg') }}"></div>
             </div>
-            <div class="user"><img src="{{ url_for('static', filename='assets/user_model1.jpg') }}"></div>
-        </div>
+            </div>
         <div class="barra"></div>
     </header>
 

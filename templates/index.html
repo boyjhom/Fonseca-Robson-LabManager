@@ -9,27 +9,29 @@
 <body>
     <header>
         <div class="center">
+            <!-- Mantida apenas uma mensagem de boas-vindas -->
             <div class="logo">
                 <img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" alt="Logo" width="100" height="100">
+            </div>
+            <div class="content">
+                <h1>Bem-vindo, {{ usuario.nome }}!</h1>
             </div>
             <div class="menu">
                 <a href="{{ url_for('estoque') }}">Armazenamento</a>
                 <a href="{{ url_for('equipe') }}">Equipe</a>
                 <a href="{{ url_for('meu_perfil') }}">Meu Perfil</a>
+                <a href="{{ url_for('logout') }}">Sair</a>
+                <div class="user">
+                    <img src="{{ url_for('static', filename='assets/user_model1.jpg') }}" alt="Usuário">
+                </div>
             </div>
-            <div class="user">
-                <img src="{{ url_for('static', filename='assets/user_model1.jpg') }}" alt="Usuário">
-            </div>
-            <button onclick="window.location.href='{{ url_for('logout') }}'" class="botao-sair">Sair</button>
         </div>
         <div class="barra"></div>
     </header>
     <main>
-        <!-- Mantida apenas uma mensagem de boas-vindas -->
-        <div class="content">
-            <h1>Bem-vindo, {{ usuario.nome }}!</h1>
+        <div class="principal_img">
+            <img src="{{ url_for('static', filename='assets/index_img.png') }}" alt="Laboratório">
         </div>
-        
         <!-- Barra de busca -->
         <div class="search-container">
             <input type="text" placeholder="O que você está buscando?">
