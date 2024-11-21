@@ -1,5 +1,6 @@
 from reportlab.pdfgen import canvas
 from flask import Flask, render_template, request, redirect, url_for, session, make_response
+import json
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -11,7 +12,9 @@ class Usuario:
         self.password = password
         self.nome = nome
         self.email = email
-        self.cargo = cargo
+        self.cargo = cargo   
+    def __repr__(self):
+        return f"Usuario(username={self.username}, nome={self.nome})"
 
 # Classe para gerenciar a aplicação
 class Aplicacao:
@@ -19,6 +22,7 @@ class Aplicacao:
         self.usuarios = []
         self.estoque = []
         self.cautelas = []
+        self.carregar_dados() # Carrega os dados ao iniciar o programa
 
         # Adicionando itens de exemplo ao estoque
         self.adicionar_item_estoque("Arduino Uno", 15, "Placa microcontroladora para prototipagem eletrônica")
@@ -31,6 +35,42 @@ class Aplicacao:
         self.adicionar_item_estoque("Fonte de Alimentação Regulável", 8, "Fornecimento de energia ajustável para projetos")
         self.adicionar_item_estoque("Jumpers e Fios Conectores", 200, "Fios para prototipagem em placas de ensaio")
         self.adicionar_item_estoque("Kit de Sensores Diversos", 15, "Conjunto com sensores de temperatura, luz, entre outros")
+
+    def salvar_dados(self):
+        """
+        Salva os dados de usuários, estoque e cautelas em arquivos JSON.
+        """
+        with open("usuarios.json", "w") as usuarios_file:
+            json.dump([vars(u) for u in self.usuarios], usuarios_file, indent=4)
+
+        with open("estoque.json", "w") as estoque_file:
+            json.dump(self.estoque, estoque_file, indent=4)
+
+        with open("cautelas.json", "w") as cautelas_file:
+            json.dump(self.cautelas, cautelas_file, indent=4)
+
+    def carregar_dados(self):
+        """
+        Carrega os dados de usuários, estoque e cautelas dos arquivos JSON.
+        """
+        try:
+            with open("usuarios.json", "r") as usuarios_file:
+                self.usuarios = [Usuario(**data) for data in json.load(usuarios_file)]
+        except FileNotFoundError:
+            self.usuarios = []
+
+        try:
+            with open("estoque.json", "r") as estoque_file:
+                self.estoque = json.load(estoque_file)
+        except FileNotFoundError:
+            self.estoque = []
+
+        try:
+            with open("cautelas.json", "r") as cautelas_file:
+                self.cautelas = json.load(cautelas_file)
+        except FileNotFoundError:
+            self.cautelas = []
+
 
     def adicionar_usuario(self, username, password, nome, email, cargo):
         if not any(u.username == username for u in self.usuarios):
@@ -54,6 +94,7 @@ class Aplicacao:
             'descricao': descricao,
             'disponivel': quantidade
         })
+        self.salvar_dados() # Salva os dados após adicionar um item ao estoque
 
     def retirar_item(self, nome, quantidade, usuario):
         for item in self.estoque:
@@ -64,18 +105,39 @@ class Aplicacao:
                     'item': nome,
                     'quantidade': quantidade,
                 })
+                self.salvar_dados() # Salva os dados após a retirada
                 return True
         return False
 
     def devolver_item(self, nome, quantidade, usuario):
+ 
         for item in self.estoque:
             if item['nome'] == nome:
+            # Atualiza o estoque
                 item['disponivel'] += quantidade
-                self.cautelas = [
-                    c for c in self.cautelas if not (c['usuario'] == usuario and c['item'] == nome and c['quantidade'] == quantidade)
-                ]
-                return True
-        return False
+
+            # Procura a cautela correspondente
+                for cautela in self.cautelas:
+                    if (
+                        cautela['usuario'] == usuario and
+                        cautela['item'] == nome
+                    ):
+                        if quantidade <= cautela['quantidade']:
+                        # Reduz a quantidade na cautela
+                            cautela['quantidade'] -= quantidade
+                        
+                        # Remove a cautela se a quantidade chegar a 0
+                            if cautela['quantidade'] == 0:
+                                self.cautelas.remove(cautela)
+                            self.salvar_dados()  # Salva os dados após a devolução
+                            return True  # Devolução bem-sucedida
+                        else:
+                            return False  # Tentativa de devolver mais do que foi retirado
+        return False  # Não encontrou o item ou a cautela correspondente
+
+
+
+
 
 # Instância da aplicação
 aplicacao = Aplicacao()
@@ -176,36 +238,60 @@ def devolver():
     nome = request.form['nome']
     quantidade = int(request.form['quantidade'])
     username = session.get('username')
+
+    print(f"Tentativa de devolução: {nome}, quantidade: {quantidade}, usuário: {username}")
+    print(f"Estado atual de cautelas: {aplicacao.cautelas}")
+
     if aplicacao.devolver_item(nome, quantidade, username):
+        print(f"Devolução bem-sucedida de {quantidade} unidades de {nome} por {username}")
         return redirect(url_for('estoque'))
-    return "Erro: Não foi possível devolver o item."
+    
+    print("Erro: Não foi possível devolver o item.")
+    return "Erro: Não foi possível devolver o item. Verifique a quantidade informada."
+
 
 @app.route('/relatorio_cautela')
 def gerar_relatorio():
+    """
+    Gera um relatório em PDF com os registros de cautela atuais.
+    """
+    print("Cautelas ativas antes de gerar o relatório:", aplicacao.cautelas)  # Log para verificar as cautelas ativas
+
+    # Cria um PDF em memória
     response = make_response()
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline; filename=relatorio_cautela.pdf'
-    
+
+    # Cria o objeto canvas para desenhar no PDF
     pdf = canvas.Canvas(response.stream)
+    
+    # Cabeçalho do relatório
     pdf.setFont("Helvetica-Bold", 16)
     pdf.drawString(100, 800, "Relatório de Cautela de Materiais")
     pdf.setFont("Helvetica", 12)
     pdf.drawString(100, 780, f"Total de registros: {len(aplicacao.cautelas)}")
     pdf.line(50, 770, 550, 770)
 
+    # Adicionando dados das cautelas ativas
     y_position = 750
     pdf.setFont("Helvetica", 10)
+
     for cautela in aplicacao.cautelas:
         pdf.drawString(50, y_position, f"Usuário: {cautela['usuario']}")
         pdf.drawString(200, y_position, f"Item: {cautela['item']}")
         pdf.drawString(350, y_position, f"Quantidade: {cautela['quantidade']}")
         y_position -= 20
+
+        # Se a página estiver cheia, criar uma nova
         if y_position < 50:
             pdf.showPage()
             y_position = 800
             pdf.setFont("Helvetica", 10)
+
+    # Finaliza o PDF
     pdf.save()
     return response
+
 
 @app.route('/logout')
 def logout():
