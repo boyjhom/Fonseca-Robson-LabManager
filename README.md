@@ -31,6 +31,10 @@ Os modelos para GUI seguem um layout simples e minimalista
 ![Equipe](https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/Equipe_GUI.png)
 ![Meu Perfil](https://github.com/boyjhom/AppliedProg/blob/main/esboco_GUI/Meu_perfil_GUI.png)
 
+### **Fluxograma e Diagrama de Classes**
+![Diagrama de Classes](https://github.com/boyjhom/AppliedProg/blob/main/fluxograma_e_diagrama_de_classes/Fluxograma_LabManager.png)
+![Fluxograma](https://github.com/boyjhom/AppliedProg/blob/main/fluxograma_e_diagrama_de_classes/Diagrama_de_Classes.png)
+
 
 ### **Funcionalidades**
 - **Gerenciamento de Estoque**:
