@@ -9,7 +9,6 @@
 <body>
     <header>
         <div class="center">
-            <!-- Mantida apenas uma mensagem de boas-vindas -->
             <div class="logo">
                 <img src="{{ url_for('static', filename='assets/logo_sem_fundo.png') }}" alt="Logo" width="100" height="100">
             </div>
@@ -32,11 +31,32 @@
         <div class="principal_img">
             <img src="{{ url_for('static', filename='assets/index_img.png') }}" alt="Laboratório">
         </div>
+        
         <!-- Barra de busca -->
         <div class="search-container">
-            <input type="text" placeholder="O que você está buscando?">
-            <button>Buscar</button>
+            <form action="{{ url_for('pesquisar_estoque') }}" method="POST">
+                <input type="text" name="termo" placeholder="O que você está buscando?">
+                <button type="submit">Buscar</button>
+            </form>
         </div>
+
+        <!-- Exibir os resultados da pesquisa -->
+        {% if resultados is not none %}
+        <div class="resultados">
+    {% if resultados|length > 0 %}
+        <h3>Resultados da pesquisa:</h3>
+        <ul>
+            {% for item in resultados %}
+                <li>{{ item['nome'] }} - Disponível: {{ item['disponivel'] }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum resultado encontrado.</p>
+    {% endif %}
+</div>
+{% endif %}
+
+
     </main>
 </body>
 </html>
