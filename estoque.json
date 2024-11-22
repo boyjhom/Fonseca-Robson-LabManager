@@ -1,0 +1,62 @@
+[
+    {
+        "nome": "Arduino Uno",
+        "quantidade": 15,
+        "descricao": "Placa microcontroladora para prototipagem eletr\u00f4nica",
+        "disponivel": 15
+    },
+    {
+        "nome": "Raspberry Pi 4",
+        "quantidade": 10,
+        "descricao": "Computador compacto e vers\u00e1til para projetos diversos",
+        "disponivel": 10
+    },
+    {
+        "nome": "Servo Motor SG90",
+        "quantidade": 25,
+        "descricao": "Pequeno motor para controle de movimento",
+        "disponivel": 25
+    },
+    {
+        "nome": "Sensor Ultrass\u00f4nico HC-SR04",
+        "quantidade": 20,
+        "descricao": "Sensor de dist\u00e2ncia para rob\u00f3tica",
+        "disponivel": 20
+    },
+    {
+        "nome": "M\u00f3dulo Bluetooth HC-05",
+        "quantidade": 12,
+        "descricao": "Comunica\u00e7\u00e3o sem fio para rob\u00f4s e dispositivos",
+        "disponivel": 12
+    },
+    {
+        "nome": "Motores DC com Redutor",
+        "quantidade": 18,
+        "descricao": "Motores DC com redu\u00e7\u00e3o para torque elevado",
+        "disponivel": 18
+    },
+    {
+        "nome": "Kit de Roda e Pneus",
+        "quantidade": 30,
+        "descricao": "Rodas para constru\u00e7\u00e3o de rob\u00f4s m\u00f3veis",
+        "disponivel": 30
+    },
+    {
+        "nome": "Fonte de Alimenta\u00e7\u00e3o Regul\u00e1vel",
+        "quantidade": 8,
+        "descricao": "Fornecimento de energia ajust\u00e1vel para projetos",
+        "disponivel": 8
+    },
+    {
+        "nome": "Jumpers e Fios Conectores",
+        "quantidade": 200,
+        "descricao": "Fios para prototipagem em placas de ensaio",
+        "disponivel": 200
+    },
+    {
+        "nome": "Kit de Sensores Diversos",
+        "quantidade": 15,
+        "descricao": "Conjunto com sensores de temperatura, luz, entre outros",
+        "disponivel": 15
+    }
+]

@@ -22,19 +22,20 @@ class Aplicacao:
         self.usuarios = []
         self.estoque = []
         self.cautelas = []
-        self.carregar_dados() # Carrega os dados ao iniciar o programa
+        self.carregar_dados()  # Carrega os dados ao iniciar o programa
 
-        # Adicionando itens de exemplo ao estoque
-        self.adicionar_item_estoque("Arduino Uno", 15, "Placa microcontroladora para prototipagem eletrônica")
-        self.adicionar_item_estoque("Raspberry Pi 4", 10, "Computador compacto e versátil para projetos diversos")
-        self.adicionar_item_estoque("Servo Motor SG90", 25, "Pequeno motor para controle de movimento")
-        self.adicionar_item_estoque("Sensor Ultrassônico HC-SR04", 20, "Sensor de distância para robótica")
-        self.adicionar_item_estoque("Módulo Bluetooth HC-05", 12, "Comunicação sem fio para robôs e dispositivos")
-        self.adicionar_item_estoque("Motores DC com Redutor", 18, "Motores DC com redução para torque elevado")
-        self.adicionar_item_estoque("Kit de Roda e Pneus", 30, "Rodas para construção de robôs móveis")
-        self.adicionar_item_estoque("Fonte de Alimentação Regulável", 8, "Fornecimento de energia ajustável para projetos")
-        self.adicionar_item_estoque("Jumpers e Fios Conectores", 200, "Fios para prototipagem em placas de ensaio")
-        self.adicionar_item_estoque("Kit de Sensores Diversos", 15, "Conjunto com sensores de temperatura, luz, entre outros")
+        # Adiciona itens de exemplo apenas se o estoque estiver vazio
+        if not self.estoque:
+            self.adicionar_item_estoque("Arduino Uno", 15, "Placa microcontroladora para prototipagem eletrônica")
+            self.adicionar_item_estoque("Raspberry Pi 4", 10, "Computador compacto e versátil para projetos diversos")
+            self.adicionar_item_estoque("Servo Motor SG90", 25, "Pequeno motor para controle de movimento")
+            self.adicionar_item_estoque("Sensor Ultrassônico HC-SR04", 20, "Sensor de distância para robótica")
+            self.adicionar_item_estoque("Módulo Bluetooth HC-05", 12, "Comunicação sem fio para robôs e dispositivos")
+            self.adicionar_item_estoque("Motores DC com Redutor", 18, "Motores DC com redução para torque elevado")
+            self.adicionar_item_estoque("Kit de Roda e Pneus", 30, "Rodas para construção de robôs móveis")
+            self.adicionar_item_estoque("Fonte de Alimentação Regulável", 8, "Fornecimento de energia ajustável para projetos")
+            self.adicionar_item_estoque("Jumpers e Fios Conectores", 200, "Fios para prototipagem em placas de ensaio")
+            self.adicionar_item_estoque("Kit de Sensores Diversos", 15, "Conjunto com sensores de temperatura, luz, entre outros")
 
     def salvar_dados(self):
         """
@@ -62,6 +63,8 @@ class Aplicacao:
         try:
             with open("estoque.json", "r") as estoque_file:
                 self.estoque = json.load(estoque_file)
+        # Remove duplicados por 'nome'
+            self.estoque = list({item['nome']: item for item in self.estoque}.values())
         except FileNotFoundError:
             self.estoque = []
 
@@ -165,7 +168,20 @@ def index():
     if not usuario_logado:
         return redirect(url_for('login'))  # Redireciona caso o usuário não seja encontrado
     
-    return render_template('index.html', usuario=usuario_logado)
+    # Inicialmente, não há resultados
+    return render_template('index.html', usuario=usuario_logado, resultados=None)
+
+
+@app.route('/pesquisar_estoque', methods=['POST'])
+def pesquisar_estoque():
+    termo = request.form['termo']
+    resultados = [item for item in aplicacao.estoque if termo.lower() in item['nome'].lower()]
+    username = session.get('username')
+    if username:
+        usuario_logado = aplicacao.encontrar_usuario(username)
+        return render_template('index.html', usuario=usuario_logado, resultados=resultados)
+    return redirect(url_for('login'))
+
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
