@@ -107,6 +107,10 @@ O projeto está organizado em três principais pastas:
 - Correção de bugs relacionados à passagem de parâmetros nas rotas.
 - Ajustes no CSS para melhorar o layout e a responsividade da interface.
 
+### 7. Sistema de Pesquisa
+- Adição de um sistema de pesquisa na página `index.html`.
+- Correção de bugs relacionados a duplicação de itens.
+
 ---
 
 ### Dependências Necessárias

@@ -138,10 +138,6 @@ class Aplicacao:
                             return False  # Tentativa de devolver mais do que foi retirado
         return False  # Não encontrou o item ou a cautela correspondente
 
-
-
-
-
 # Instância da aplicação
 aplicacao = Aplicacao()
 
