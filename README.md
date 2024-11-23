@@ -135,9 +135,7 @@ Instale-as diretamente com:
 pip install flask reportlab
 ```
 
-
-
-#### **1. Inicializando o Projeto**
+## **Inicializando o Projeto**
 
 1. Certifique-se de que você possui **Python 3.8 ou superior** instalado em sua máquina.
 2. Clone este repositório para sua máquina local:
