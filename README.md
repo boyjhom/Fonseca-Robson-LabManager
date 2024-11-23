@@ -229,3 +229,7 @@ pip install flask reportlab
 - Novas funcionalidades podem ser implementadas editando o arquivo `app.py` e os templates HTML na pasta `templates`.
 
 
+
+## **Dificuldades**
+
+- O projeto apresenta desafios relacionados à integração de funcionalidades de estoque, login, e relatórios dinâmicos, além de garantir a persistência de dados e a usabilidade através de uma interface gráfica minimalista.
