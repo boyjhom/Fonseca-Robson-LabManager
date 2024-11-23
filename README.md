@@ -133,5 +133,101 @@ Caso não tenha o arquivo `requirements.txt`, as bibliotecas principais são:
 Instale-as diretamente com:
 ```bash
 pip install flask reportlab
+```
+
+
+
+#### **1. Inicializando o Projeto**
+
+1. Certifique-se de que você possui **Python 3.8 ou superior** instalado em sua máquina.
+2. Clone este repositório para sua máquina local:
+   ```bash
+   git clone https://github.com/boyjhom/Fonseca-Robson-LabManager.git
+   ```
+
+3. Entre na pasta do projeto:
+   ```bash
+   cd Fonseca-Robson-LabManager
+   ```
+4. Crie um ambiente virtual (opcional, mas recomendado):
+   ```bash
+   python -m venv venv
+   source venv/bin/activate   # Para Linux/Mac
+   venv\Scripts\activate      # Para Windows
+   ```
+5. Instale as dependências necessárias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+#### **2. Executando o Sistema**
+
+1. Dentro da pasta do projeto, execute o comando para iniciar o servidor:
+   ```bash
+   python app.py
+   ```
+2. Acesse o sistema no navegador através do endereço:
+   ```
+   http://127.0.0.1:5000
+   ```
+
+
+#### **3. Navegando pelo Sistema**
+
+##### **Login e Cadastro**
+- Na página inicial, você pode **fazer login** com suas credenciais ou **cadastrar-se** clicando no botão "Cadastrar".
+- Após o cadastro, use o nome de usuário e senha criados para acessar o sistema.
+
+##### **Gerenciamento de Estoque**
+- Navegue para a aba **"Armazenamento"**:
+  - Visualize a lista de itens disponíveis no estoque.
+  - Atualize as quantidades de itens existentes no sistema.
+  - Registre novas retiradas ou devoluções.
+
+##### **Administração da Equipe**
+- Navegue para a aba **"Equipe"**:
+  - Visualize a lista de membros cadastrados.
+  - Verifique os detalhes, como nome, e-mail e cargo.
+
+##### **Perfil do Usuário**
+- Na aba **"Meu Perfil"**, você pode visualizar suas informações pessoais, como:
+  - Nome
+  - Cargo
+  - E-mail
+
+
+
+#### **4. Funcionalidades Específicas**
+
+##### **Retirada e Devolução de Itens**
+- **Retirada**:
+  - Vá para a aba **"Armazenamento"** e selecione o item que deseja retirar.
+  - Insira a quantidade e clique em "Retirar".
+  - A quantidade disponível será automaticamente atualizada no sistema.
+- **Devolução**:
+  - Na mesma aba, selecione o item que deseja devolver.
+  - Insira a quantidade a ser devolvida (limite de devolução respeitado pela quantidade retirada).
+  - Clique em "Devolver".
+
+##### **Geração de Relatório em PDF**
+- Clique no botão **"Gerar Relatório"** na aba de armazenamento.
+- O sistema gerará um relatório PDF com as transações de retirada e devolução realizadas pelos usuários.
+- O PDF é aberto diretamente no navegador e pode ser baixado.
+
+
+
+#### **5. Persistência de Dados**
+- **Usuários, estoque e transações de cautela** são armazenados em arquivos `.json` para garantir que os dados não sejam perdidos ao reiniciar o sistema.
+- Os dados são salvos automaticamente em:
+  - `data/usuarios.json`: Armazena os usuários cadastrados.
+  - `data/estoque.json`: Armazena os itens e quantidades disponíveis no estoque.
+  - `data/cautelas.json`: Armazena os registros de retiradas e devoluções.
+
+
+
+#### **6. Personalização e Expansão**
+
+- Para adicionar novos itens ao estoque, edite o arquivo `estoque.json` ou utilize a interface de armazenamento.
+- Novas funcionalidades podem ser implementadas editando o arquivo `app.py` e os templates HTML na pasta `templates`.
 
 
