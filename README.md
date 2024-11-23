@@ -115,6 +115,9 @@ O projeto está organizado em três principais pastas:
 - Adição de um sistema de pesquisa na página `index.html`.
 - Correção de bugs relacionados a duplicação de itens.
 
+### 8. Persistência implementada
+- Adição de armazenamento persistente de usuários, estoque e cautela utilizando arquivos json para armazenamento local.
+
 ---
 
 ### Dependências Necessárias
