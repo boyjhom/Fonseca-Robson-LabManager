@@ -116,7 +116,7 @@ O projeto está organizado em três principais pastas:
 - Correção de bugs relacionados a duplicação de itens.
 
 ### 8. Persistência implementada
-- Adição de armazenamento persistente de usuários, estoque e cautela utilizando arquivos json para armazenamento local.
+- Adição de armazenamento persistente de usuários, estoque e cautela utilizando arquivos `json` para armazenamento local.
 
 ---
 
